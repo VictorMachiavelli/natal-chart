@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "natal-chart"
+dynamic = ["version"]
+description = "Tropical natal chart math (planets, Placidus/Koch/whole-sign houses, aspects, transits) on NASA JPL ephemerides via Skyfield. No Swiss Ephemeris."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Victor Balakirev", email = "balakirevvictor@gmail.com" }]
+keywords = ["astrology", "natal chart", "horoscope", "ephemeris", "placidus", "houses", "aspects", "transits", "skyfield", "jpl"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Typing :: Typed",
+]
+dependencies = [
+    "skyfield>=1.45",
+    "tzdata; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+# pyswisseph (AGPL) is used ONLY by the optional cross-check tests; it is
+# never imported by the package itself.
+test = ["pytest>=7", "pyswisseph>=2.10"]
+
+[project.urls]
+Homepage = "https://astralread.com"
+Repository = "https://github.com/VictorMachiavelli/natal-chart"
+Issues = "https://github.com/VictorMachiavelli/natal-chart/issues"
+
+[project.scripts]
+natal-chart = "natal_chart.cli:main"
+
+[tool.hatch.version]
+path = "src/natal_chart/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/natal_chart"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/natal_chart", "tests", "README.md", "LICENSE", "CHANGELOG.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
