@@ -1,5 +1,7 @@
 # natal-chart
 
+[![PyPI](https://img.shields.io/pypi/v/natal-chart)](https://pypi.org/project/natal-chart/) [![Python](https://img.shields.io/pypi/pyversions/natal-chart)](https://pypi.org/project/natal-chart/) [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 Tropical natal chart math for Python: planet positions, houses
 (Placidus, Koch, Porphyry, Equal, Whole Sign), Ascendant/MC, mean lunar node,
 mean Black Moon Lilith, major aspects and transits.
